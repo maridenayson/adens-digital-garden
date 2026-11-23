@@ -7,7 +7,7 @@ configuration:
   analytics:
     provider: plausible
   locale: en-US
-  baseUrl: adensdigitalgarden.github.io
+  baseUrl: maridenayson.github.io/adens-digital-garden
   ignorePatterns:
     - private
     - templates

@@ -4,8 +4,17 @@
   "private": true,
   "type": "module",
   "exports": {
-    ".": "./index.ts",
-    "./components": "./components.ts"
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./components": {
+      "types": "./dist/components.d.ts",
+      "import": "./dist/components.js"
+    }
+  },
+  "scripts": {
+    "build": "tsc --declaration --emitDeclarationOnly --outDir dist --target ES2022 --module ESNext --moduleResolution bundler --jsx react-jsx --jsxImportSource preact --skipLibCheck index.ts components.ts && cp dist/plugins/reading-progress/index.d.ts dist/index.d.ts && cp dist/plugins/reading-progress/components.d.ts dist/components.d.ts && esbuild index.ts --format=esm --outfile=dist/index.js && esbuild components.ts --bundle --format=esm --outfile=dist/components.js"
   },
   "quartz": {
     "name": "reading-progress",

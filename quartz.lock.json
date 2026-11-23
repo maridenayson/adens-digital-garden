@@ -1,0 +1,11 @@
+{
+  "version": "1.0.0",
+  "plugins": {
+    "reading-progress": {
+      "source": "./plugins/reading-progress",
+      "resolved": "/Users/aden/Desktop/my-digital-garden/plugins/reading-progress",
+      "commit": "local",
+      "installedAt": "2026-11-23T18:59:19.920Z"
+    }
+  }
+}
