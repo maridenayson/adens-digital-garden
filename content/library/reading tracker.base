@@ -1,0 +1,64 @@
+formulas:
+  date_finished_sort: if(date_finished.isEmpty(), date("0001-01-01"), date_finished)
+  reading_year: if(date_finished, date_finished.year,"")
+views:
+  - type: cards
+    name: Currently Reading
+    filters:
+      and:
+        - file.inFolder("library/books")
+        - status == "reading"
+    order:
+      - title
+      - author
+      - progress
+    imageFit: contain
+    imageAspectRatio: 1.5
+    image: note.cover
+    cardSize: 170
+  - type: cards
+    name: Five-Star Favorites
+    filters:
+      and:
+        - file.inFolder("library/books")
+        - rating == "★★★★★"
+    order:
+      - title
+      - rating
+    sort:
+      - property: formula.date_finished_sort
+        direction: DESC
+    image: note.cover
+    imageFit: contain
+    imageAspectRatio: 1.5
+    cardSize: 170
+  - type: cards
+    name: To Be Read
+    filters:
+      and:
+        - file.inFolder("library/books")
+        - status == "tbr"
+    order:
+      - title
+    image: note.cover
+    imageAspectRatio: 1.5
+    imageFit: contain
+    cardSize: 170
+  - type: cards
+    name: Read by Year
+    filters:
+      and:
+        - file.inFolder("library/books")
+        - status == "finished"
+    order:
+      - file.name
+      - formula.reading_year
+      - rating
+      - author
+    sort:
+      - property: date_finished
+        direction: DESC
+    image: note.cover
+    imageFit: contain
+    imageAspectRatio: 1.5
+    cardSize: 170

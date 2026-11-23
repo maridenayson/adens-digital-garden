@@ -1,0 +1,23 @@
+{
+  "name": "reading-progress",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./index.ts",
+    "./components": "./components.ts"
+  },
+  "quartz": {
+    "name": "reading-progress",
+    "displayName": "Reading Progress",
+    "description": "Displays reading progress as an accessible progress bar on the Library Index.",
+    "category": "component",
+    "version": "1.0.0",
+    "quartzVersion": ">=5.0.0",
+    "components": {
+      "ReadingProgress": {
+        "displayName": "Reading Progress"
+      }
+    }
+  }
+}
