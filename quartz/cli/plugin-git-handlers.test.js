@@ -4,7 +4,12 @@ import { execSync } from "child_process"
 import fs from "fs"
 import os from "os"
 import path from "path"
-import { buildPluginAsync, linkPeerPlugins, pluginSourceChanged } from "./plugin-git-handlers.js"
+import {
+  buildPluginAsync,
+  linkPeerPlugins,
+  pluginSourceChanged,
+  resolveLocalPluginPath,
+} from "./plugin-git-handlers.js"
 
 let root
 let hostPreact
@@ -126,6 +131,25 @@ describe("pluginSourceChanged", () => {
     // First-ever install: nothing to compare against, so this alone must not
     // force a reinstall of an unrelated pre-existing directory.
     assert.strictEqual(pluginSourceChanged(undefined, "github:owner/repo#main"), false)
+  })
+
+  describe("resolveLocalPluginPath", () => {
+    test("uses the configured local source instead of a machine-specific lock path", () => {
+      const cwd = process.cwd()
+      process.chdir(root)
+      try {
+        assert.strictEqual(
+          resolveLocalPluginPath({
+            source: "./plugins/reading-progress",
+            resolved: "/old/machine/plugins/reading-progress",
+            commit: "local",
+          }),
+          path.join(root, "plugins", "reading-progress"),
+        )
+      } finally {
+        process.chdir(cwd)
+      }
+    })
   })
 
   test("is false when the source is unchanged", () => {

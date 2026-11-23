@@ -3,7 +3,7 @@
   "plugins": {
     "reading-progress": {
       "source": "./plugins/reading-progress",
-      "resolved": ".plugins/reading-progress",
+      "resolved": "./plugins/reading-progress",
       "commit": "local",
       "installedAt": "2026-11-23T18:59:19.920Z"
     }
