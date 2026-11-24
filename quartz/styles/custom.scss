@@ -1350,7 +1350,7 @@ body[data-slug="library-index"] .content-meta {
 html,
 body,
 body * {
-  cursor: url("/static/cursor/left-flower-cursor-48px.png") 8 8, auto !important;
+  cursor: url("./static/cursor/left-flower-cursor-48px.png") 8 8, auto !important;
 }
 
 /* Hover cursor — right single flower */
@@ -1363,5 +1363,5 @@ button *,
 summary,
 input[type="submit"],
 input[type="button"] {
-  cursor: url("/static/cursor/right-flower-cursor-48px.png") 24 24, pointer !important;
+  cursor: url("./static/cursor/right-flower-cursor-48px.png") 24 24, pointer !important;
 }
