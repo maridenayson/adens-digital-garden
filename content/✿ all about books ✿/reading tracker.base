@@ -3,10 +3,28 @@ formulas:
   reading_year: if(date_finished, date_finished.year,"")
 views:
   - type: cards
+    name: Read by Year
+    filters:
+      and:
+        - file.inFolder("✿ all about books ✿/books")
+        - status == "finished"
+    order:
+      - file.name
+      - formula.reading_year
+      - rating
+      - author
+    sort:
+      - property: date_finished
+        direction: DESC
+    image: note.cover
+    imageFit: contain
+    imageAspectRatio: 1.5
+    cardSize: 170
+  - type: cards
     name: Currently Reading
     filters:
       and:
-        - file.inFolder("library/books")
+        - file.inFolder("✿ all about books ✿/books")
         - status == "reading"
     order:
       - title
@@ -20,7 +38,7 @@ views:
     name: Five-Star Favorites
     filters:
       and:
-        - file.inFolder("library/books")
+        - file.inFolder("✿ all about books ✿/books")
         - rating == "★★★★★"
     order:
       - title
@@ -36,29 +54,11 @@ views:
     name: To Be Read
     filters:
       and:
-        - file.inFolder("library/books")
+        - file.inFolder("✿ all about books ✿/books")
         - status == "tbr"
     order:
       - title
     image: note.cover
     imageAspectRatio: 1.5
     imageFit: contain
-    cardSize: 170
-  - type: cards
-    name: Read by Year
-    filters:
-      and:
-        - file.inFolder("library/books")
-        - status == "finished"
-    order:
-      - file.name
-      - formula.reading_year
-      - rating
-      - author
-    sort:
-      - property: date_finished
-        direction: DESC
-    image: note.cover
-    imageFit: contain
-    imageAspectRatio: 1.5
     cardSize: 170

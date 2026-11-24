@@ -7,9 +7,12 @@ ExternalPlugin.Explorer({
     return (
       path === "library" ||
       path === "about" ||
-      path === "library/library-index" ||
+      path === "library-index" ||
       path === "projects" ||
-      path === "brain-dump"
+      path === "brain-dump" ||
+      path === "mind-maps" ||
+      path === "✿-all-about-books-✿" ||
+      path?.startsWith("✿-all-about-books-✿/")
     )
   },
   mapFn: (node) => {
@@ -29,8 +32,8 @@ ExternalPlugin.Explorer({
   sortFn: (a, b) => {
     const aName = (a.slugSegment || a.displayName || "").toLowerCase()
     const bName = (b.slugSegment || b.displayName || "").toLowerCase()
-    const aRank = aName.includes("about") ? 0 : aName.includes("library") ? 1 : aName.includes("project") ? 2 : aName.includes("brain") ? 3 : 4
-    const bRank = bName.includes("about") ? 0 : bName.includes("library") ? 1 : bName.includes("project") ? 2 : bName.includes("brain") ? 3 : 4
+    const aRank = aName.includes("about") ? 0 : aName.includes("library") ? 1 : aName.includes("all-about-books") ? 2 : aName.includes("mind-maps") ? 3 : aName.includes("projects") ? 4 : aName.includes("brain-dump") ? 5 : 6 
+    const bRank = bName.includes("about") ? 0 : bName.includes("library") ? 1 : bName.includes("all-about-books") ? 2 : bName.includes("mind-maps") ? 3 : bName.includes("projects") ? 4 : bName.includes("brain-dump") ? 5 : 6
     const rankDiff = aRank - bRank
     if (rankDiff !== 0) return rankDiff
 

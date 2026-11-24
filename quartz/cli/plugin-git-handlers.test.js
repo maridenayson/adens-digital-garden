@@ -133,25 +133,6 @@ describe("pluginSourceChanged", () => {
     assert.strictEqual(pluginSourceChanged(undefined, "github:owner/repo#main"), false)
   })
 
-  describe("resolveLocalPluginPath", () => {
-    test("uses the configured local source instead of a machine-specific lock path", () => {
-      const cwd = process.cwd()
-      process.chdir(root)
-      try {
-        assert.strictEqual(
-          resolveLocalPluginPath({
-            source: "./plugins/reading-progress",
-            resolved: "/old/machine/plugins/reading-progress",
-            commit: "local",
-          }),
-          path.join(root, "plugins", "reading-progress"),
-        )
-      } finally {
-        process.chdir(cwd)
-      }
-    })
-  })
-
   test("is false when the source is unchanged", () => {
     const priorEntry = { source: "github:owner/repo#main", resolved: "...", commit: "abc123" }
     assert.strictEqual(pluginSourceChanged(priorEntry, "github:owner/repo#main"), false)
@@ -183,5 +164,24 @@ describe("pluginSourceChanged", () => {
   test("is true when the repo itself changed", () => {
     const priorEntry = { source: "github:owner/old-repo", resolved: "...", commit: "abc123" }
     assert.strictEqual(pluginSourceChanged(priorEntry, "github:owner/new-repo"), true)
+  })
+})
+
+describe("resolveLocalPluginPath", () => {
+  test("uses the configured local source instead of a machine-specific lock path", () => {
+    const cwd = process.cwd()
+    process.chdir(root)
+    try {
+      assert.strictEqual(
+        resolveLocalPluginPath({
+          source: "./plugins/reading-progress",
+          resolved: "/old/machine/plugins/reading-progress",
+          commit: "local",
+        }),
+        path.join(root, "plugins", "reading-progress"),
+      )
+    } finally {
+      process.chdir(cwd)
+    }
   })
 })

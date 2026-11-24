@@ -1,7 +1,7 @@
 ---
-title: ✿ library index ✿
+title: ✿ my library ✿
 tags:
-    - books
+  - books
 quartz properties: false
 ---
 ## ✿ currently reading

@@ -22,7 +22,7 @@ title: ✿ about me  ✿
     <span class="about-tag">she/her/hers</span>
     <span class="about-tag">INFP</span>
     <span class="about-tag">☼ taurus sun</span>
-    <span class="about-tag">☾ libra moon</span>
+    <span class="about-tag">☾ aries moon</span>
     <span class="about-tag">↑ libra rising</span>
   </div>
 
